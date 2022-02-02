@@ -3,27 +3,34 @@
     <div class="col-12 col-lg-4 offset-lg-4">
       <div class="card">
         <div class="card-body">
-          <form>
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div class="form-group mb-2">
               <label for="username">Username</label>
               <div class="input-group">
                 <label class="input-group-text" for="username">
                   <i class="fas fa-user fa-fw"></i>
                 </label>
-                <input type="text" class="form-control" id="username" name="username" />
+                <input type="text" class="form-control" id="username" name="username" formControlName="username" />
+              </div>
+              <div *ngIf="isInvalidField('username')">
+                <p class="text-danger" *ngIf="isRequiredField('username')">Se requiere este campo</p>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
               <label for="email">Email</label>
-              <div class="input-group mb-2">
+              <div class="input-group">
                 <label class="input-group-text" for="email">
                   <i class="fas fa-envelope fa-fw"></i>
                 </label>
-                <input type="email" class="form-control" id="email" name="email"/>
+                <input type="email" class="form-control" id="email" name="email" formControlName="email"/>
               </div>
+               <div *ngIf="isInvalidField('email')">
+                 <p class="text-danger" *ngIf="isRequiredField('email')">Se requiere este campo</p>
+                 <p class="text-danger" *ngIf="isNotEmail()">El email ingresado no es válido</p>
+               </div>
             </div>
             <div class="d-grid">
-              <button class="btn btn-success">
+              <button class="btn btn-success" [disabled]="myForm.invalid">
                 Create account
               </button>
             </div>
