@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="username" name="username" formControlName="username" />
               </div>
               <div *ngIf="isInvalidField('username')">
-                <p class="text-danger" *ngIf="isRequiredField('username')">Se requiere este campo</p>
+                <p class="text-danger" *ngIf="isRequiredField('username')">Field required</p>
               </div>
             </div>
             <div class="form-group mb-2">
@@ -25,8 +25,8 @@
                 <input type="email" class="form-control" id="email" name="email" formControlName="email"/>
               </div>
                <div *ngIf="isInvalidField('email')">
-                 <p class="text-danger" *ngIf="isRequiredField('email')">Se requiere este campo</p>
-                 <p class="text-danger" *ngIf="isNotEmail()">El email ingresado no es válido</p>
+                 <p class="text-danger" *ngIf="isRequiredField('email')">Field required</p>
+                 <p class="text-danger" *ngIf="isNotEmail()">Email is invalid</p>
                </div>
             </div>
             <div class="d-grid">
