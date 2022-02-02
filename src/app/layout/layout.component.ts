@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-layout',
@@ -12,7 +13,9 @@ export class LayoutComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  constructor() {}
+  constructor(
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,6 +34,6 @@ export class LayoutComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.myForm.value);
+    this.toastr.success(`Username: ${this.myForm.value.username}, Email: ${this.myForm.value.email}`);
   }
 }
